@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+
+<?php
+if (isset($_REQUEST['ok'])) {
+ $xml = new DOMDocument("1.0","UTF-8");
+ $xml->load("a.xml");
+
+ $rootTag = $xml->getElementsByTagName("document")->item(0);
+
+ $dataTag = $xml->createElement("data");
+
+ $aTag = $xml->createElement("a",$_REQUEST['a']);
+ $bTag = $xml->createElement("b",$_REQUEST['b']);
+
+ $dataTag->appendChild($aTag);
+ $dataTag->appendChild($bTag);
+
+ $rootTag->appendChild($dataTag);
+
+ $xml->save("a.xml");
+}
+?>
+
+
+
+<!-- {#<html>
+    <head>
+        {% block head %}
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/container.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/button.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/segment.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/form.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/input.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/label.css">
+          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/menu.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+           $(document).ready(function(){
+              var i=1;
+              $('#add').click(function(){
+               i++;
+               $('#device').append('<input type="text" name="name[]" placeholder="device" /><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button>');
+             });
+            $(document).on('click', '.btn_remove', function(){
+                var button_id = $(this).attr("id");
+            $('#row'+button_id+'').remove();
+            });
+
+        </script>
+            <title>
+            {% block title %}
+            {% endblock %} - My Webpage
+            </title>
+
+        {% endblock %}
+    </head>
+    <body>
+      <div id="content">
+        {% block content %}
+            <div class="ui container">
+                <div class="ui center aligned segment">
+                <h2> Create XMI </h2>
+                </div>
+
+                <div class="ui form" id="create">
+                <form action="" method="post" enctype="multipart/form-data" id="create-form">
+
+                    <div class="field" id="device">
+                        <label> Device Name </label>
+                        <input type="text" name="device">
+                    </div>
+                 <!--   <div class="field">
+                        <label> Assembly </label>
+                        <input type="text" name="device">
+                    </div>
+                    <div class="field">
+                        <label> Component </label>
+                        <input type="text" name="device">
+                    </div>-->
+                    <button id="add" class="ui button">
+                      Add Device
+                    </button>
+
+                      <!-- <div class="ui divider"></div>
+                 <div class="ui fluid three item menu">
+                        <a class="item" id="addDevice">Device</a>
+                        <a class="item">Assembly</a>
+                        <a class="item">Component</a>
+                    </div>
+
+
+
+                            <div class="ui inverted yellow button" id="device" onclick="addInput();">
+
+                               Add Device
+                            </div>
+
+
+
+
+                      <div class="ui segment">
+                            <input class="positive ui button" type="submit" value="Create XMI" name="create">
+                        </div>  -->
+                </form>
+            </div>
+            </div>
+        {% endblock %}
+        </div>
+
+    </body>
+</html> #}-->
+
+<html>
+      <head>
+           <title> Create XMI </title>
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+      </head>
+      <body>
+           <div class="container">
+                <br />
+                <br />
+                <h2 align="center">Create XMI </h2>
+                <div class="form-group">
+                     <form name="add_name" id="add_name">
+                          <div class="table-responsive">
+                               <table class="table table-bordered" id="dynamic_field">
+                                    <tr>
+                                         <td><input type="text" name="dname[]" placeholder="Device Name" class="form-control name_list" /></td>
+                                         <td><button type="button" name="add" id="add" class="btn btn-success">Add Device</button></td>
+                                    </tr>
+                                    <tr>
+                                         <td><input type="text" name="aname[]" placeholder="Assembly Name" class="form-control name_list" /></td>
+                                         <td><button type="button" name="add_assembly" id="add_assembly" class="btn btn-success">Add Assembly</button></td>
+                                    </tr>
+                                    <tr>
+                                         <td><input type="text" name="cname[]" placeholder="Component Name" class="form-control name_list" /></td>
+                                         <td><button type="button" name="add_component" id="add_component" class="btn btn-success">Add Component</button></td>
+                                    </tr>
+                               </table>
+                               <input type="button" name="submit" id="submit" class="btn btn-info" value="Create XMI" />
+                          </div>
+                     </form>
+                </div>
+           </div>
+
+         <!-- <div class="container">
+                <br />
+                <br />
+                <h2 align="center">Add Associations </h2>
+                <div class="form-group">
+                     <form name="add_assoc" id="add_assoc">
+                          <div class="table-responsive">
+                               <table class="table table-bordered" id="dynamic_assoc">
+                                    <tr>
+                                         <!--<td><input type="text" name="dname[]" placeholder="Device Name" class="form-control name_list" /></td> -->
+                                      <!--   <td><button type="button" name="add" id="add_assoc" class="btn btn-success">Add Association with device</button></td>
+                                         <td><button type="button" name="add_assembly" id="add_assembly_assoc" class="btn btn-success">Add Association with Assembly</button></td>
+                                         <td><button type="button" name="add_component" id="add_component_assoc" class="btn btn-success">Add Association with Component</button></td>
+                                    </tr>
+                                    <tr>
+                                         <!--<td><input type="text" name="aname[]" placeholder="Assembly Name" class="form-control name_list" /></td> -->
+                                       <!--   <td><input type="text" name="dname[]" placeholder="Device Name" class="form-control name_list" /></td>
+
+                                    </tr>
+                                    <tr>
+                                         <!--<td><input type="text" name="cname[]" placeholder="Component Name" class="form-control name_list" /></td>  -->
+
+                                  <!--  </tr>
+                               </table>
+                               <input type="button" name="submit" id="submit" class="btn btn-info" value="Create XMI" />
+                          </div>
+                     </form>
+                </div>
+           </div>  -->
+      </body>
+ </html>
+ <script>
+ $(document).ready(function(){
+      var i=1;
+      var j=1;
+      var k=1;
+      $('#add').click(function(){
+           i++;
+           $('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Device Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+      });
+      $('#add_assembly').click(function(){
+           j++;
+           $('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Assembly Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+      });
+      $('#add_component').click(function(){
+           k++;
+           $('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Component Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+      });
+      $(document).on('click', '.btn_remove', function(){
+           var button_id = $(this).attr("id");
+           $('#row'+button_id+'').remove();
+      });
+
+      var p=1;
+      var q=1;
+      var r=1;
+
+      $('#add_assoc').click(function(){
+           p++;
+           $('#dynamic_assoc').append('<tr id="row'+p+'"><td><input type="text" name="name[]" placeholder="Device Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+p+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+      });
+      $('#add_assembly_assoc').click(function(){
+           q++;
+           $('#dynamic_assoc').append('<tr id="row'+q+'"><td><input type="text" name="name[]" placeholder="Assembly Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+q+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+      });
+      $('#add_component_assoc').click(function(){
+           r++;
+           $('#dynamic_assoc').append('<tr id="row'+r+'"><td><input type="text" name="name[]" placeholder="Component Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+r+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+      });
+      $(document).on('click', '.btn_remove', function(){
+           var button_id = $(this).attr("id");
+           $('#row'+button_id+'').remove();
+      });
+       /*$('#submit').click(function(){
+           $.ajax({
+                url:"create.php",
+                method:"POST",
+                data:$('#add_name').serialize(),
+                success:function(data)
+                {
+                     alert(data);
+                     $('#add_name')[0].reset();
+                }
+           });
+      });  */
+    });
+</script>
