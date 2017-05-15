@@ -62,14 +62,12 @@ if (isset($_REQUEST['ok'])) {
 }
 ?>
 
-
 <form action="index.php" method="post">
  Device Name: <input type="text" name="device" /> <br>
  Assembly Name: <input type="text" name="assembly" /> <br>
  Component Name: <input type="text" name="component" /> <br>
  <input type="submit" value="Generate XML"name="ok">
 </form>
-
 
  </body>
 </html>﻿

@@ -28,16 +28,6 @@
 </eAnnotations>
 <appliedProfile href="sysml.profile.xmi#_WjFHADQBEeegr7mwXb5Jtw"/>
 </profileApplication>
-<packagedElement name="anyComponent" xmi:type="uml:Association" xmi:id="_WiWHPTQBEeegr7mwXb5Jtw" memberEnd="_WiWHOjQBEeegr7mwXb5Jtw _WiWHPjQBEeegr7mwXb5Jtw">
-  <ownedEnd xmi:id="_WiWHPjQBEeegr7mwXb5Jtw" visibility="public" type="_WiWHOTQBEeegr7mwXb5Jtw" association="_WiWHPTQBEeegr7mwXb5Jtw">
-    <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WiWHPzQBEeegr7mwXb5Jtw"/>
-  </ownedEnd>
-</packagedElement>
-<packagedElement name="anotherComponent" xmi:type="uml:Association" xmi:id="_WiWHPTQBEeegr7mwXb5Jtw" memberEnd="_WiWHOjQBEeegr7mwXb5Jtw _WiWHPjQBEeegr7mwXb5Jtw">
-  <ownedEnd xmi:id="_WiWHPjQBEeegr7mwXb5Jtw" visibility="public" type="_WiWHOTQBEeegr7mwXb5Jtw" association="_WiWHPTQBEeegr7mwXb5Jtw">
-    <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WiWHPzQBEeegr7mwXb5Jtw"/>
-  </ownedEnd>
-</packagedElement>
 </uml:Model>
 <sysml:Block xmi:id="_WkrCcDQBEeegr7mwXb5Jtw" base_Class="_WiWHNDQBEeegr7mwXb5Jtw"/>
 <sysml:Block xmi:id="_WkrCcTQBEeegr7mwXb5Jtw" base_Class="_WiWHOTQBEeegr7mwXb5Jtw"/>
